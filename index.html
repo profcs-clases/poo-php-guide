@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de POO en PHP - Para Estudiantes</title>
+    
+    <!-- Prism.js para syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header con navegación -->
+    <header class="header">
+        <div class="container">
+            <h1><i class="fas fa-code"></i> POO en PHP</h1>
+            <nav class="nav">
+                <button class="mobile-menu-btn" aria-label="Menú">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="#intro">Introducción</a></li>
+                    <li><a href="#clases">Clases</a></li>
+                    <li><a href="#propiedades">Propiedades</a></li>
+                    <li><a href="#constructor">Constructor</a></li>
+                    <li><a href="#encapsulamiento">Encapsulamiento</a></li>
+                    <li><a href="#herencia">Herencia</a></li>
+                    <li><a href="#polimorfismo">Polimorfismo</a></li>
+                    <li><a href="#abstractas">Abstractas</a></li>
+                    <li><a href="#tips">Tips</a></li>
+                    <li><a href="#github">GitHub</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>🚀 Programación Orientada a Objetos</h2>
+                <p class="hero-subtitle">Una guía práctica y sencilla para estudiantes de Ingeniería Informática</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <i class="fas fa-book"></i>
+                        <span>8 Temas</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-code"></i>
+                        <span>+20 Ejemplos</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-clock"></i>
+                        <span>30 min lectura</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- Sección 1: Introducción -->
+            <section id="intro" class="section">
+                <div class="section-header">
+                    <span class="section-number">01</span>
+                    <h2>¿Qué es la POO y por qué nos importa?</h2>
+                </div>
+                <div class="content-card">
+                    <p>Imagina que estás programando de forma "tradicional" (Programación Estructurada). Escribir código es como seguir una <strong>receta de cocina</strong> paso a paso: cortar, hervir, freír. Funciona bien para cosas pequeñas.</p>
+                    
+                    <p>Pero, ¿qué pasa si tienes que construir un videojuego o un sistema bancario? Una receta gigante se vuelve un caos.</p>
+                    
+                    <div class="highlight-box">
+                        <h3><i class="fas fa-lightbulb"></i> La solución: POO</h3>
+                        <p>La <strong>Programación Orientada a Objetos</strong> propone un cambio de mentalidad: en lugar de escribir una receta gigante, vas a <strong>crear "cosas" (objetos)</strong> que interactúan entre sí, tal como en la vida real.</p>
+                    </div>
+
+                    <div class="analogy">
+                        <h3><i class="fas fa-cookie-bite"></i> La analogía del Molde y la Galleta</h3>
+                        <div class="analogy-grid">
+                            <div class="analogy-item">
+                                <div class="analogy-icon">🔧</div>
+                                <h4>Clase</h4>
+                                <p>Es el <strong>molde</strong> para galletas. Define la forma, pero no es la galleta en sí. No puedes comértela.</p>
+                            </div>
+                            <div class="analogy-item">
+                                <div class="analogy-icon">🍪</div>
+                                <h4>Objeto</h4>
+                                <p>Es la <strong>galleta real</strong> creada con el molde. Puedes hacer 100 galletas (objetos) con un solo molde (clase).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 2: Tu primera Clase -->
+            <section id="clases" class="section">
+                <div class="section-header">
+                    <span class="section-number">02</span>
+                    <h2>Tu primera Clase y tu primer Objeto</h2>
+                </div>
+                <div class="content-card">
+                    <p>En PHP, una clase se define con la palabra clave <code>class</code>. El objeto se crea con <code>new</code>.</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="language-badge">PHP</span>
+                            <button class="copy-btn" data-code="code1">
+                                <i class="fas fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <pre class="line-numbers"><code id="code1" class="language-php">&lt;?php
+// Esto es el MOLDE (La Clase)
+class Estudiante {
+    // Aquí irán las características (Propiedades)
+    // Aquí irán las acciones (Métodos)
+}
+
+// Esto es la GALLETa (El Objeto)
+$estudiante1 = new Estudiante();
+$estudiante2 = new Estudiante();
+?></code></pre>
+                    </div>
+                    
+                    <div class="note">
+                        <i class="fas fa-info-circle"></i>
+                        <p><strong>Nota:</strong> <code>new</code> es la palabra mágica en PHP que dice "Oye, crea un objeto basado en esta clase".</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 3: Propiedades y Métodos -->
+            <section id="propiedades" class="section">
+                <div class="section-header">
+                    <span class="section-number">03</span>
+                    <h2>Propiedades y Métodos (Sustantivos y Verbos)</h2>
+                </div>
+                <div class="content-card">
+                    <div class="grid-2">
+                        <div class="info-box">
+                            <h3><i class="fas fa-tag"></i> Propiedades (Atributos)</h3>
+                            <p>Son las <strong>características</strong> del objeto (Sustantivos: nombre, edad, carrera).</p>
+                        </div>
+                        <div class="info-box">
+                            <h3><i class="fas fa-bolt"></i> Métodos</h3>
+                            <p>Son las <strong>cosas que el objeto puede hacer</strong> (Verbos: estudiar, dormir, comer).</p>
+                        </div>
+                    </div>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="language-badge">PHP</span>
+                            <button class="copy-btn" data-code="code2">
+                                <i class="fas fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <pre class="line-numbers"><code id="code2" class="language-php">&lt;?php
+class Estudiante {
+    // Propiedades
+    public $nombre;
+    public $edad;
+    public $carrera;
+
+    // Métodos
+    public function estudiar() {
+        echo "¡Estoy estudiando Ingeniería en Sistemas!";
+    }
+    
+    public function presentarse() {
+        // La palabra $this es CRUCIAL. Significa "ESTE objeto en particular".
+        echo "Hola, soy " . $this->nombre . " y tengo " . $this->edad . " años.";
+    }
+}
+
+// Uso:
+$juan = new Estudiante();
+$juan->nombre = "Juan Pérez"; // Asignamos valores
+$juan->edad = 19;
+
+$juan->presentarse(); // Salida: Hola, soy Juan Pérez y tengo 19 años.
+$juan->estudiar();    // Salida: ¡Estoy estudiando Ingeniería en Sistemas!
+?></code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 4: Constructor -->
+            <section id="constructor" class="section">
+                <div class="section-header">
+                    <span class="section-number">04</span>
+                    <h2>El Constructor: Dando vida con estilo</h2>
+                </div>
+                <div class="content-card">
+                    <p>Escribir <code>$juan->nombre = "Juan"</code> línea por línea es tedioso. El <strong>Constructor</strong> es un método especial que se ejecuta <strong>automáticamente</strong> en el exacto momento en que creas el objeto (<code>new</code>).</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="language-badge">PHP</span>
+                            <button class="copy-btn" data-code="code3">
+                                <i class="fas fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <pre class="line-numbers"><code id="code3" class="language-php">&lt;?php
+class Estudiante {
+    public $nombre;
+    public $edad;
+
+    // El constructor siempre se llama __construct
+    public function __construct($nombre_recibido, $edad_recibida) {
+        $this->nombre = $nombre_recibido;
+        $this->edad = $edad_recibida;
+    }
+
+    public function presentarse() {
+        echo "Soy " . $this->nombre . " y tengo " . $this->edad . " años.\n";
+    }
+}
+
+// Ahora es mucho más limpio y rápido:
+$maria = new Estudiante("María Gómez", 20);
+$maria->presentarse(); // Salida: Soy María Gómez y tengo 20 años.
+?></code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 5: Encapsulamiento -->
+            <section id="encapsulamiento" class="section">
+                <div class="section-header">
+                    <span class="section-number">05</span>
+                    <h2>Encapsulamiento: Protegiendo tus datos 🛡️</h2>
+                </div>
+                <div class="content-card">
+                    <p>Imagina la cápsula de una nave espacial. Los astronautas presionan botones (métodos públicos), pero no tienen acceso directo a los cables y reactores (propiedades privadas).</p>
+                    
+                    <h3>Modificadores de Acceso:</h3>
+                    <div class="access-modifiers">
+                        <div class="modifier public">
+                            <i class="fas fa-globe"></i>
+                            <h4>public</h4>
+                            <p>Todos pueden verlo y usarlo desde afuera.</p>
+                        </div>
+                        <div class="modifier private">
+                            <i class="fas fa-lock"></i>
+                            <h4>private</h4>
+                            <p><strong>Solo</strong> la misma clase puede verlo.</p>
+                        </div>
+                        <div class="modifier protected">
+                            <i class="fas fa-user-shield"></i>
+                            <h4>protected</h4>
+                            <p>Similar a private, pero las clases "hijas" también pueden verlo.</p>
+                        </div>
+                    </div>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="language-badge">PHP</span>
+                            <button class="copy-btn" data-code="code4">
+                                <i class="fas fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <pre class="line-numbers"><code id="code4" class="language-php">&lt;?php
+class CuentaBancaria {
+    // El saldo es PRIVADO. Nadie puede modificarlo directamente.
+    private $saldo; 
+
+    public function __construct($saldo_inicial) {
+        $this->saldo = $saldo_inicial;
+    }
+
+    // Métodos GETTERS y SETTERS (Son los "botones" de la cápsula)
+    public function getSaldo() {
+        return $this->saldo;
+    }
+
+    public function depositar($monto) {
+        if ($monto > 0) { // ¡Aquí protegemos la lógica!
+            $this->saldo += $monto;
+            echo "Depósito exitoso.\n";
+        } else {
+            echo "Error: No puedes depositar cantidades negativas.\n";
+        }
+    }
+}
+
+$cuenta = new CuentaBancaria(100);
+
+// $cuenta->saldo = -5000; // ❌ ERROR FATAL. La propiedad es privada.
+// $cuenta->saldo += 100;  // ❌ ERROR FATAL.
+
+$cuenta->depositar(50);     // ✅ Correcto. Pasa por la validación.
+echo "Saldo actual: $" . $cuenta->getSaldo(); // ✅ Salida: $150
+?></code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 6: Herencia -->
+            <section id="herencia" class="section">
+                <div class="section-header">
+                    <span class="section-number">06</span>
+                    <h2>Herencia: No te repitas (DRY) ♻️</h2>
+                </div>
+                <div class="content-card">
+                    <p>La Herencia permite crear una clase nueva basándose en una clase ya existente.</p>
+                    
+                    <div class="inheritance-diagram">
+                        <div class="parent-class">
+                            <i class="fas fa-car"></i>
+                            <h4>Clase Padre (Superclase)</h4>
+                            <p>La clase base</p>
+                        </div>
+                        <i class="fas fa-arrow-down"></i>
+                        <div class="child-classes">
+                            <div class="child-class">
+                                <i class="fas fa-car-side"></i>
+                                <h4>Clase Hija 1</h4>
+                                <p>Hereda todo</p>
+                            </div>
+                            <div class="child-class">
+                                <i class="fas fa-truck"></i>
+                                <h4>Clase Hija 2</h4>
+                                <p>Hereda todo</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="language-badge">PHP</span>
+                            <button class="copy-btn" data-code="code5">
+                                <i class="fas fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <pre class="line-numbers"><code id="code5" class="language-php">&lt;?php
+// CLASE PADRE
+class Vehiculo {
+    public $marca;
+    public $modelo;
+
+    public function __construct($marca, $modelo) {
+        $this->marca = $marca;
+        $this->modelo = $modelo;
+    }
+
+    public function encender() {
+        echo "El vehículo está encendido.\n";
+    }
+}
+
+// CLASE HIJA (Usamos 'extends')
+class Auto extends Vehiculo {
+    public $cantidad_puertas;
+
+    public function __construct($marca, $modelo, $puertas) {
+        // Llamamos al constructor del PADRE para no repetir código
+        parent::__construct($marca, $modelo); 
+        $this->cantidad_puertas = $puertas;
+    }
+
+    // Método exclusivo del Auto
+    public function abrirCajuela() {
+        echo "La cajuela del " . $this->marca . " está abierta.\n";
+    }
+}
+
+$miAuto = new Auto("Toyota", "Corolla", 4);
+$miAuto->encender();     // ✅ Heredado del Padre
+$miAuto->abrirCajuela(); // ✅ Propio del Hijo
+?></code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 7: Polimorfismo -->
+            <section id="polimorfismo" class="section">
+                <div class="section-header">
+                    <span class="section-number">07</span>
+                    <h2>Polimorfismo: Muchos comportamientos 🎭</h2>
+                </div>
+                <div class="content-card">
+                    <p>"Polimorfismo" significa <strong>"Muchas formas"</strong>. Ocurre cuando clases diferentes tienen un método con el <strong>mismo nombre</strong>, pero cada una lo ejecuta a su manera.</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="language-badge">PHP</span>
+                            <button class="copy-btn" data-code="code6">
+                                <i class="fas fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <pre class="line-numbers"><code id="code6" class="language-php">&lt;?php
+class Ave {
+    public function volar() {
+        echo "El ave está volando alto en el cielo.\n";
+    }
+}
+
+class Pinguino extends Ave {
+    // Sobrescribimos (Override) el método del padre
+    public function volar() {
+        echo "¡Error! Los pingüinos no vuelan, pero nadan muy rápido.\n";
+    }
+}
+
+class Avion { // No hereda de Ave, pero tiene el mismo método
+    public function volar() {
+        echo "El avión está volando a 900 km/h.\n";
+    }
+}
+
+// El polimorfismo brilla cuando los tratas a todos como "cosas que vuelan"
+$paloma = new Ave();
+$pinguino = new Pinguino();
+$boeing = new Avion();
+
+$paloma->volar();   // El ave está volando...
+$pinguino->volar(); // ¡Error! Los pingüinos...
+$boeing->volar();   // El avión está volando...
+?></code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 8: Clases Abstractas -->
+            <section id="abstractas" class="section">
+                <div class="section-header">
+                    <span class="section-number">08</span>
+                    <h2>Clases Abstractas: El Contrato 📜</h2>
+                </div>
+                <div class="content-card">
+                    <p>A veces, una clase es tan general que no debería existir por sí sola. Por ejemplo, la clase <code>FiguraGeometrica</code>. No puedes dibujar una "Figura", puedes dibujar un "Círculo" o un "Cuadrado".</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="language-badge">PHP</span>
+                            <button class="copy-btn" data-code="code7">
+                                <i class="fas fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <pre class="line-numbers"><code id="code7" class="language-php">&lt;?php
+// No se puede instanciar (new Figura() dará error)
+abstract class Figura {
+    protected $color;
+
+    public function __construct($color) {
+        $this->color = $color;
+    }
+
+    // Método abstracto: No tiene cuerpo (no tiene código entre llaves).
+    // Obliga a las hijas a crearlo.
+    abstract public function calcularArea(); 
+}
+
+class Circulo extends Figura {
+    private $radio;
+
+    public function __construct($color, $radio) {
+        parent::__construct($color);
+        $this->radio = $radio;
+    }
+
+    // Obligados a implementar calcularArea
+    public function calcularArea() {
+        return pi() * ($this->radio ** 2);
+    }
+}
+
+$circulo = new Circulo("Rojo", 5);
+echo "El área es: " . $circulo->calcularArea();
+?></code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Tips -->
+            <section id="tips" class="section">
+                <div class="section-header">
+                    <span class="section-number">💡</span>
+                    <h2>3 Reglas de Oro para el estudiante</h2>
+                </div>
+                <div class="content-card">
+                    <div class="tips-grid">
+                        <div class="tip-card">
+                            <div class="tip-number">1</div>
+                            <h3>Nombres con sentido</h3>
+                            <p>Tus clases deben ser <strong>Sustantivos</strong> (<code>Usuario</code>, <code>Factura</code>, <code>Carrito</code>). Tus métodos deben ser <strong>Verbos</strong> (<code>calcularTotal()</code>, <code>enviarCorreo()</code>).</p>
+                        </div>
+                        <div class="tip-card">
+                            <div class="tip-number">2</div>
+                            <h3>Responsabilidad Única</h3>
+                            <p>Una clase debe hacer <strong>una sola cosa</strong> y hacerla bien. La clase <code>Usuario</code> no debería también conectarse a la base de datos y enviar emails.</p>
+                        </div>
+                        <div class="tip-card">
+                            <div class="tip-number">3</div>
+                            <h3>Practica en Terminal</h3>
+                            <p>La POO se entiende viendo los objetos "vivir". Crea un archivo <code>index.php</code>, instancia objetos, imprime sus propiedades con <code>var_dump()</code> o <code>echo</code> y juega con ellos.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección GitHub -->
+            <section id="github" class="section">
+                <div class="section-header">
+                    <span class="section-number">🚀</span>
+                    <h2>Cómo publicar en GitHub Pages</h2>
+                </div>
+                <div class="content-card">
+                    <div class="github-guide">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Crea tu cuenta en GitHub</h3>
+                                <p>Ve a <a href="https://github.com" target="_blank">github.com</a> y crea una cuenta gratuita si no la tienes.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Crea un nuevo repositorio</h3>
+                                <ul>
+                                    <li>Haz clic en el botón <strong>"New"</strong> o <strong>"New repository"</strong></li>
+                                    <li>Nómbralo: <code>poo-php-guide</code> (o el nombre que prefieras)</li>
+                                    <li>Marca la opción <strong>"Public"</strong></li>
+                                    <li>Marca <strong>"Add a README file"</strong></li>
+                                    <li>Haz clic en <strong>"Create repository"</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Sube tus archivos</h3>
+                                <ul>
+                                    <li>Dentro del repo, haz clic en <strong>"Add file"</strong> → <strong>"Upload files"</strong></li>
+                                    <li>Arrastra los archivos: <code>index.html</code>, <code>styles.css</code>, <code>script.js</code></li>
+                                    <li>En el mensaje de commit, escribe: "Primera versión de la guía"</li>
+                                    <li>Haz clic en <strong>"Commit changes"</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Activa GitHub Pages</h3>
+                                <ul>
+                                    <li>Ve a la pestaña <strong>"Settings"</strong> del repositorio</li>
+                                    <li>En el menú lateral, busca <strong>"Pages"</strong></li>
+                                    <li>En <strong>"Source"</strong>, selecciona <strong>"Deploy from a branch"</strong></li>
+                                    <li>En <strong>"Branch"</strong>, selecciona <strong>"main"</strong> y la carpeta <strong>"/ (root)"</strong></li>
+                                    <li>Haz clic en <strong>"Save"</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h3>¡Listo! Tu página está en línea</h3>
+                                <p>Espera 1-2 minutos y tu página estará disponible en:</p>
+                                <code>https://TU-USUARIO.github.io/poo-php-guide/</code>
+                                <p style="margin-top: 1rem;">Puedes ver el estado de la publicación en la pestaña <strong>"Actions"</strong> del repositorio.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Hecho con ❤️ para estudiantes de Ingeniería Informática</p>
+            <p class="footer-links">
+                <a href="#intro">Volver al inicio</a> | 
+                <a href="https://www.php.net/manual/es/language.oop5.php" target="_blank">Documentación oficial de PHP</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Botón scroll to top -->
+    <button class="scroll-top" aria-label="Volver arriba">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Prism.js para syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <!-- Script personalizado -->
+    <script src="script.js"></script>
+</body>
+</html>
