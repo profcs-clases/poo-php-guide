@@ -12,6 +12,7 @@ Una guía interactiva y visual para estudiantes de los primeros años de Ingenie
 - Herencia
 - Polimorfismo
 - Clases Abstractas
+- **Clase Abstracta vs Interfaz** (¡Nuevo! ⚔️)
 - Consejos prácticos
 
 ## 🌐 Ver en línea
