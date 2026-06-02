@@ -617,3 +617,169 @@ pre[class*="language-"] {
 .line-numbers .line-numbers-rows {
     border-right: 1px solid #4a5568;
 }
+
+/* === Estilos para sección: Abstracta vs Interfaz === */
+
+/* Contenedor de tabla con scroll horizontal en móviles */
+.comparison-table-wrapper {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+}
+
+.comparison-table thead {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+}
+
+.comparison-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.comparison-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.comparison-table tbody tr:hover {
+    background: #f7fafc;
+}
+
+.comparison-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Badges para la tabla */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.badge-success {
+    background: #c6f6d5;
+    color: #22543d;
+}
+
+.badge-danger {
+    background: #fed7d7;
+    color: #742a2a;
+}
+
+/* Cita dentro de analogía */
+.analogy-quote {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 8px;
+    font-style: italic;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+/* Regla de Oro */
+.gold-rule {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 2px solid #f59e0b;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    margin-top: 2rem;
+}
+
+.gold-rule h3 {
+    color: #92400e;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.rule-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.rule-card {
+    background: white;
+    padding: 1.25rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.rule-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.rule-question {
+    font-size: 0.95rem;
+    color: var(--gray);
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+.rule-answer {
+    color: var(--primary);
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+}
+
+.rule-answer i {
+    color: #f59e0b;
+}
+
+/* Truco mental */
+.mental-trick {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid #f59e0b;
+}
+
+.mental-trick h4 {
+    color: #92400e;
+    margin-bottom: 0.75rem;
+}
+
+.mental-trick ul {
+    list-style: none;
+    padding: 0;
+}
+
+.mental-trick li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.mental-trick li::before {
+    content: "➡️";
+    position: absolute;
+    left: 0;
+}
+
+.mental-trick code {
+    background: var(--code-bg);
+    color: #f7fafc;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
