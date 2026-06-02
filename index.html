@@ -37,6 +37,7 @@
                     <li><a href="#herencia">Herencia</a></li>
                     <li><a href="#polimorfismo">Polimorfismo</a></li>
                     <li><a href="#abstractas">Abstractas</a></li>
+                    <li><a href="#interfaces">vs Interfaz</a></li>
                     <li><a href="#tips">Tips</a></li>
                 </ul>
             </nav>
@@ -52,7 +53,7 @@
                 <div class="hero-stats">
                     <div class="stat">
                         <i class="fas fa-book"></i>
-                        <span>8 Temas</span>
+                        <span>9 Temas</span> <!-- 👈 Cambiar de 8 a 9 -->
                     </div>
                     <div class="stat">
                         <i class="fas fa-code"></i>
@@ -60,7 +61,7 @@
                     </div>
                     <div class="stat">
                         <i class="fas fa-clock"></i>
-                        <span>30 min lectura</span>
+                        <span>35 min lectura</span> <!-- 👈 Actualizar tiempo -->
                     </div>
                 </div>
             </div>
@@ -484,6 +485,297 @@ echo "El área es: " . $circulo->calcularArea();
                 </div>
             </section>
 
+            <!-- Sección 9: Clase Abstracta vs Interfaz -->
+            <section id="interfaces" class="section">
+                <div class="section-header">
+                    <span class="section-number">09</span>
+                    <h2>Clase Abstracta vs Interfaz: El duelo definitivo ⚔️</h2>
+                </div>
+                <div class="content-card">
+                    <p>Esta es una de las dudas más comunes en POO. Ambas parecen similares, pero resuelven problemas muy diferentes. Vamos a verlo con una analogía.</p>
+
+                    <div class="analogy">
+                        <h3><i class="fas fa-university"></i> La analogía de la Universidad</h3>
+                        <div class="analogy-grid">
+                            <div class="analogy-item">
+                                <div class="analogy-icon">🏗️</div>
+                                <h4>Clase Abstracta</h4>
+                                <p>Es como un <strong>plano de edificio con algunas paredes ya construidas</strong>. El arquitecto dejó partes hechas, pero obligó al constructor a terminar el resto.</p>
+                                <p class="analogy-quote">"Te doy el 50% hecho, tú terminas lo demás."</p>
+                            </div>
+                            <div class="analogy-item">
+                                <div class="analogy-icon">📜</div>
+                                <h4>Interfaz</h4>
+                                <p>Es como un <strong>contrato legal</strong>. No te da nada construido, solo te dice: "Si quieres llamarte X, obligatoriamente debes poder hacer esto, esto y esto".</p>
+                                <p class="analogy-quote">"No te doy nada, pero si firmas, debes cumplir TODO."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabla comparativa -->
+                    <h3><i class="fas fa-table"></i> Tabla comparativa</h3>
+                    <div class="comparison-table-wrapper">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Característica</th>
+                                    <th><i class="fas fa-cube"></i> Clase Abstracta</th>
+                                    <th><i class="fas fa-file-contract"></i> Interfaz</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>¿Qué es?</strong></td>
+                                    <td>Una clase incompleta</td>
+                                    <td>Un contrato de comportamiento</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Métodos con código</strong></td>
+                                    <td><span class="badge badge-success">✅ Sí</span></td>
+                                    <td><span class="badge badge-danger">❌ No</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Propiedades/Atributos</strong></td>
+                                    <td><span class="badge badge-success">✅ Sí</span></td>
+                                    <td><span class="badge badge-danger">❌ No</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Constructores</strong></td>
+                                    <td><span class="badge badge-success">✅ Sí</span></td>
+                                    <td><span class="badge badge-danger">❌ No</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Modificadores de acceso</strong></td>
+                                    <td>public, private, protected</td>
+                                    <td>Solo public</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Herencia</strong></td>
+                                    <td>Solo de UNA (<code>extends</code>)</td>
+                                    <td>Puede ser de MUCHAS (<code>implements</code>)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Relación que expresa</strong></td>
+                                    <td>"ES UN" (identidad)</td>
+                                    <td>"PUEDE HACER" (habilidad)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Ejemplo Clase Abstracta -->
+                    <h3 style="margin-top: 2rem;"><i class="fas fa-cube"></i> Clase Abstracta en acción</h3>
+                    <p>Observa cómo tiene propiedades, constructor, un método con código (<code>saludar()</code>) y uno abstracto que obliga a las hijas a implementarlo.</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="language-badge">PHP</span>
+                            <button class="copy-btn" data-code="code8">
+                                <i class="fas fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <pre class="line-numbers"><code id="code8" class="language-php">&lt;?php
+// 🔷 Clase Abstracta
+abstract class Empleado {
+    // ✅ Puede tener propiedades
+    protected $nombre;
+    protected $salarioBase;
+
+    // ✅ Puede tener constructor
+    public function __construct($nombre, $salarioBase) {
+        $this->nombre = $nombre;
+        $this->salarioBase = $salarioBase;
+    }
+
+    // ✅ Método CON código (implementado)
+    public function saludar() {
+        return "Hola, soy " . $this->nombre;
+    }
+
+    // ✅ Método abstracto (sin código)
+    abstract public function calcularSalario();
+}
+
+// ❌ ERROR: No se puede instanciar
+// $emp = new Empleado("Juan", 1000); 
+
+class Desarrollador extends Empleado {
+    private $bono;
+
+    public function __construct($nombre, $salarioBase, $bono) {
+        parent::__construct($nombre, $salarioBase);
+        $this->bono = $bono;
+    }
+
+    // Obligado a implementar el método abstracto
+    public function calcularSalario() {
+        return $this->salarioBase + $this->bono;
+    }
+}
+
+$dev = new Desarrollador("Ana", 3000, 500);
+echo $dev->saludar();           // ✅ "Hola, soy Ana" (heredado)
+echo $dev->calcularSalario();   // ✅ 3500
+?></code></pre>
+                    </div>
+
+                    <!-- Ejemplo Interfaz -->
+                    <h3><i class="fas fa-file-contract"></i> Interfaz en acción</h3>
+                    <p>Observa cómo una clase puede implementar <strong>múltiples interfaces</strong> (algo imposible con clases abstractas).</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="language-badge">PHP</span>
+                            <button class="copy-btn" data-code="code9">
+                                <i class="fas fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <pre class="line-numbers"><code id="code9" class="language-php">&lt;?php
+// 🔶 Interfaz: solo firma de métodos
+interface Volador {
+    public function volar();
+    public function aterrizar();
+}
+
+interface Nadador {
+    public function nadar();
+}
+
+// ✅ Una clase puede implementar MUCHAS interfaces
+class Pato implements Volador, Nadador {
+    private $nombre;
+
+    public function __construct($nombre) {
+        $this->nombre = $nombre;
+    }
+
+    // Obligado a implementar AMBOS métodos
+    public function volar() {
+        return $this->nombre . " está volando 🦆✈️";
+    }
+
+    public function aterrizar() {
+        return $this->nombre . " aterrizó en el lago";
+    }
+
+    public function nadar() {
+        return $this->nombre . " está nadando 🦆🏊";
+    }
+}
+
+$pato = new Pato("Donald");
+echo $pato->volar();      // "Donald está volando 🦆✈️"
+echo $pato->nadar();      // "Donald está nadando 🦆🏊"
+?></code></pre>
+                    </div>
+
+                    <!-- El ejemplo definitivo -->
+                    <div class="highlight-box" style="margin-top: 2rem;">
+                        <h3><i class="fas fa-trophy"></i> El ejemplo definitivo: Juntas son más poderosas</h3>
+                        <p>En frameworks profesionales como <strong>Laravel</strong>, verás que se usan ambas en conjunto. La interfaz define el "qué" y la abstracta define el "cómo parcial".</p>
+                    </div>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="language-badge">PHP</span>
+                            <button class="copy-btn" data-code="code10">
+                                <i class="fas fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                        <pre class="line-numbers"><code id="code10" class="language-php">&lt;?php
+// 🔶 Interfaz: define el "qué" (contrato)
+interface Autenticable {
+    public function login($usuario, $password);
+    public function logout();
+}
+
+interface EnviableCorreo {
+    public function enviarCorreo($destino, $asunto);
+}
+
+// 🔷 Clase abstracta: define el "cómo parcial"
+abstract class Usuario implements Autenticable {
+    protected $nombre;
+    protected $email;
+
+    public function __construct($nombre, $email) {
+        $this->nombre = $nombre;
+        $this->email = $email;
+    }
+
+    // Código compartido (implementado)
+    public function logout() {
+        return $this->nombre . " cerró sesión 👋";
+    }
+
+    // Obliga a las hijas a implementar login
+    abstract public function login($usuario, $password);
+}
+
+// Clase hija concreta
+class Cliente extends Usuario implements EnviableCorreo {
+    
+    public function login($usuario, $password) {
+        return "Cliente $usuario autenticado ✅";
+    }
+
+    public function enviarCorreo($destino, $asunto) {
+        return "Enviando correo a $destino 📧";
+    }
+}
+
+$cliente = new Cliente("María", "maria@mail.com");
+echo $cliente->login("maria", "1234");
+echo $cliente->logout();
+echo $cliente->enviarCorreo("admin@mail.com", "Hola");
+?></code></pre>
+                    </div>
+
+                    <!-- Regla de Oro -->
+                    <div class="gold-rule">
+                        <h3><i class="fas fa-crown"></i> Regla de Oro (¡memoriza esto!)</h3>
+                        <div class="rule-cards">
+                            <div class="rule-card">
+                                <div class="rule-question">¿Las clases comparten código o identidad común?</div>
+                                <div class="rule-answer">
+                                    <i class="fas fa-arrow-right"></i>
+                                    Usa <strong>Clase Abstracta</strong>
+                                </div>
+                            </div>
+                            <div class="rule-card">
+                                <div class="rule-question">¿Solo necesito garantizar un comportamiento?</div>
+                                <div class="rule-answer">
+                                    <i class="fas fa-arrow-right"></i>
+                                    Usa <strong>Interfaz</strong>
+                                </div>
+                            </div>
+                            <div class="rule-card">
+                                <div class="rule-question">¿Necesito multi-herencia?</div>
+                                <div class="rule-answer">
+                                    <i class="fas fa-arrow-right"></i>
+                                    Usa <strong>Interfaz</strong>
+                                </div>
+                            </div>
+                            <div class="rule-card">
+                                <div class="rule-question">¿Necesito propiedades o constructores?</div>
+                                <div class="rule-answer">
+                                    <i class="fas fa-arrow-right"></i>
+                                    Usa <strong>Clase Abstracta</strong>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mental-trick">
+                            <h4>💡 Truco mental:</h4>
+                            <ul>
+                                <li><strong>Abstracta</strong> = "<strong>IS-A</strong>" (ES UN tipo de...) → <em>Un <code>Perro</code> ES UN <code>Animal</code></em></li>
+                                <li><strong>Interfaz</strong> = "<strong>CAN-DO</strong>" (PUEDE HACER...) → <em>Un <code>Perro</code>, un <code>Pájaro</code> y un <code>Avión</code> PUEDEN <code>Moverse</code></em></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
             <!-- Sección Tips -->
             <section id="tips" class="section">
                 <div class="section-header">
