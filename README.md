@@ -18,7 +18,7 @@ Una guía interactiva y visual para estudiantes de los primeros años de Ingenie
 
 Esta guía está publicada en GitHub Pages:
 
-**https://TU-USUARIO.github.io/poo-php-guide/**
+**https://profcs-clases.github.io/poo-php-guide/**
 
 ## 💻 Tecnologías utilizadas
 
